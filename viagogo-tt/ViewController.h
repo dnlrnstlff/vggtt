@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, strong) NSArray *tempDictionary;
+@property (nonatomic, strong) IBOutlet UILabel *countryName;
 
 
 @end

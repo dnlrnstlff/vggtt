@@ -1,0 +1,10 @@
+//
+//  VGGTTPrefixHeader.pch
+//  viagogo-tt
+//
+//  Created by Daniel-Ernest Luff on 23/03/2016.
+//  Copyright © 2016 toutright. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#define kFinishedLoading @"finishedLoading"

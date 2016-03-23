@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A5CCF8D1CA2888500A571AA /* Flag_of_Ukraine.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A5CCF8C1CA2888500A571AA /* Flag_of_Ukraine.svg.png */; };
+		1A5CCF901CA2A28300A571AA /* VGGTTCountryDeets.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5CCF8F1CA2A28300A571AA /* VGGTTCountryDeets.m */; };
 		1A79DE271CA195FA00F525A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A79DE261CA195FA00F525A9 /* main.m */; };
 		1A79DE2A1CA195FA00F525A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A79DE291CA195FA00F525A9 /* AppDelegate.m */; };
 		1A79DE2D1CA195FA00F525A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A79DE2C1CA195FA00F525A9 /* ViewController.m */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A564C141CA1DF5800D5F002 /* VGGTTCountryDeets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VGGTTCountryDeets.h; sourceTree = "<group>"; };
+		1A5CCF8C1CA2888500A571AA /* Flag_of_Ukraine.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag_of_Ukraine.svg.png; sourceTree = "<group>"; };
+		1A5CCF8F1CA2A28300A571AA /* VGGTTCountryDeets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGGTTCountryDeets.m; sourceTree = "<group>"; };
 		1A79DE221CA195FA00F525A9 /* viagogo-tt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "viagogo-tt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A79DE261CA195FA00F525A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A79DE281CA195FA00F525A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		1A79DE461CA195FA00F525A9 /* viagogo-ttUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "viagogo-ttUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A79DE4A1CA195FA00F525A9 /* viagogo_ttUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = viagogo_ttUITests.m; sourceTree = "<group>"; };
 		1A79DE4C1CA195FA00F525A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AB6B92C1CA2BBD1007EA775 /* VGGTTPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VGGTTPrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +107,18 @@
 		1A79DE241CA195FA00F525A9 /* viagogo-tt */ = {
 			isa = PBXGroup;
 			children = (
+				1AB6B92C1CA2BBD1007EA775 /* VGGTTPrefixHeader.pch */,
 				1A79DE281CA195FA00F525A9 /* AppDelegate.h */,
 				1A79DE291CA195FA00F525A9 /* AppDelegate.m */,
 				1A79DE2B1CA195FA00F525A9 /* ViewController.h */,
 				1A79DE2C1CA195FA00F525A9 /* ViewController.m */,
 				1A79DE2E1CA195FA00F525A9 /* Main.storyboard */,
+				1A564C141CA1DF5800D5F002 /* VGGTTCountryDeets.h */,
+				1A5CCF8F1CA2A28300A571AA /* VGGTTCountryDeets.m */,
 				1A79DE311CA195FA00F525A9 /* Assets.xcassets */,
 				1A79DE331CA195FA00F525A9 /* LaunchScreen.storyboard */,
 				1A79DE361CA195FA00F525A9 /* Info.plist */,
+				1A5CCF8C1CA2888500A571AA /* Flag_of_Ukraine.svg.png */,
 				1A79DE251CA195FA00F525A9 /* Supporting Files */,
 			);
 			path = "viagogo-tt";
@@ -243,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A5CCF8D1CA2888500A571AA /* Flag_of_Ukraine.svg.png in Resources */,
 				1A79DE351CA195FA00F525A9 /* LaunchScreen.storyboard in Resources */,
 				1A79DE321CA195FA00F525A9 /* Assets.xcassets in Resources */,
 				1A79DE301CA195FA00F525A9 /* Main.storyboard in Resources */,
@@ -272,6 +283,7 @@
 			files = (
 				1A79DE2D1CA195FA00F525A9 /* ViewController.m in Sources */,
 				1A79DE2A1CA195FA00F525A9 /* AppDelegate.m in Sources */,
+				1A5CCF901CA2A28300A571AA /* VGGTTCountryDeets.m in Sources */,
 				1A79DE271CA195FA00F525A9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "viagogo-tt/VGGTTPrefixHeader.pch";
 				INFOPLIST_FILE = "viagogo-tt/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "toutright.viagogo-tt";
@@ -422,6 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "viagogo-tt/VGGTTPrefixHeader.pch";
 				INFOPLIST_FILE = "viagogo-tt/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "toutright.viagogo-tt";
@@ -496,6 +510,7 @@
 				1A79DE511CA195FA00F525A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A79DE521CA195FA00F525A9 /* Build configuration list for PBXNativeTarget "viagogo-ttTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +519,7 @@
 				1A79DE541CA195FA00F525A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A79DE551CA195FA00F525A9 /* Build configuration list for PBXNativeTarget "viagogo-ttUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +528,7 @@
 				1A79DE571CA195FA00F525A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
