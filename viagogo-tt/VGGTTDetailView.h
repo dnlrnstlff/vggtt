@@ -23,6 +23,14 @@
 @property (nonatomic, retain) IBOutlet UILabel *countryNameTitle;
 @property (nonatomic, retain) IBOutlet UILabel *countryNameAlt;
 @property (nonatomic, retain) IBOutlet UIImageView *flag;
+@property (nonatomic, retain) IBOutlet UILabel *countryNameLocal;
+@property (nonatomic, retain) IBOutlet UILabel *dialingCode;
+@property (nonatomic, retain) IBOutlet UILabel *tld;
+@property (nonatomic, retain) IBOutlet UILabel *timezone;
+@property (nonatomic, retain) IBOutlet UILabel *currency;
+
+
+
 
 
 @end

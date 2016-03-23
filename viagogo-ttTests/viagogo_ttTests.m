@@ -24,9 +24,27 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testLogin {
+
+	XCTestExpectation *exp = [self expectationWithDescription:@"wait for server response"];
+
+
+	[HAAPICollection2 postUserLoginEmail:@"help@henchmanapp.com" password:@"tadas" success:^(AFHTTPRequestOperation *operation, id response, BOOL succeeded, NSString *message){
+
+		XCTAssertEqual(succeeded, YES);
+		[exp fulfill];
+
+	}failure:^(AFHTTPRequestOperation *operation, NSError *error){
+		XCTAssert(NO, @"log in test");
+		[exp fulfill];
+	}];
+
+
+
+	[self waitForExpectationsWithTimeout:30 handler:^(NSError * _Nullable error) {
+		NSLog(@"\n\n Finished general asynchronous API test %i: %s \n\n", _testNumber, __FUNCTION__);
+	}];
+
 }
 
 - (void)testPerformanceExample {

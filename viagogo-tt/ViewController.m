@@ -66,6 +66,9 @@
         }
     }];
     
+    NSString *filter = @"To Filter";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self like %@", filter];
+    NSArray *results = [countryDeets[indexPath.row] filteredArrayUsingPredicate:predicate];
     UILabel *countryNameLabel = (UILabel *)[cell viewWithTag:101];
     countryNameLabel.text = countryDeets.username[indexPath.row];
     UILabel *populationLabel = (UILabel *)[cell viewWithTag:102];
