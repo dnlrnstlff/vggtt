@@ -8,20 +8,21 @@
 
 
 #import "VGGTTCountryDeets.h"
+#import <MapKit/MapKit.h>
 @interface VGGTTDetailView : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    UITableView *tableView;
 }
 
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) NSArray *borderFullDataEntry;
 @property (nonatomic, strong) NSArray *countryName;
 @property (nonatomic, strong) VGGTTCountryDeets *countryData;
-@property (nonatomic, strong) UITableView *borderTable;
+
+@property (nonatomic, strong) IBOutlet UITableView *borderTable;
 
 
-@property (nonatomic, strong) IBOutlet UILabel *countryNameTitle;
-@property (nonatomic, strong) IBOutlet UILabel *countryNameAlt;
-@property (nonatomic, strong) IBOutlet UIImageView *flag;
+@property (nonatomic, retain) IBOutlet UILabel *countryNameTitle;
+@property (nonatomic, retain) IBOutlet UILabel *countryNameAlt;
+@property (nonatomic, retain) IBOutlet UIImageView *flag;
 
 
 @end

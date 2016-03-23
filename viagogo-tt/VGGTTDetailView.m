@@ -24,27 +24,8 @@ NSTimer *timer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
        [self borderLoad];
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"borderCell"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedLoading:) name:kFinishedLoading object:nil];
-}
-
-- (IBAction)finishedLoading:(id)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [tableView reloadData];
-        [tableView reloadInputViews];
-        NSLog(@"Finished11");
-            
-            
-        });});
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [tableView reloadInputViews];
-        NSArray *indexArray = [_borderTable indexPathsForVisibleRows];
-        [tableView reloadRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationFade];
-        NSLog(@"Finished");
-    });
+    [_borderTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"borderCell"];
 }
 
 
@@ -66,15 +47,8 @@ NSTimer *timer;
             NSLog(@"%@",connectionError);
         }
     }];
-
-    [_borderTable reloadData];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [_borderTable setNeedsDisplay];
-}
+    
+   }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -87,7 +61,7 @@ NSTimer *timer;
     
     static NSString *simpleTableIdentifier = @"borderCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [_borderTable dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
@@ -134,8 +108,8 @@ NSTimer *timer;
     _borderFullDataEntry = resonse;
     _countryName = [resonse valueForKey:@"name"];
     NSLog(@"VOunt");
-    [[NSNotificationCenter defaultCenter] postNotificationName:kFinishedLoading object:nil];
-   
+   [_borderTable reloadData];
+    
 
 }
 

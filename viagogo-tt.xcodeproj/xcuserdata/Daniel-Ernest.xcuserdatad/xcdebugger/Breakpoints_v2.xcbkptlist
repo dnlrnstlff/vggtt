@@ -52,7 +52,7 @@
                   moduleName = "viagogo-tt"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Daniel-Ernest/Documents/Git/viagogo-tt/viagogo-tt/ViewController.m"
-                  timestampString = "480453537.01424"
+                  timestampString = "480457179.248616"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "67"
@@ -67,7 +67,7 @@
                   moduleName = "viagogo-tt"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Daniel-Ernest/Documents/Git/viagogo-tt/viagogo-tt/ViewController.m"
-                  timestampString = "480453537.014512"
+                  timestampString = "480457179.24879"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-borderLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-borderLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-borderLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-borderLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-borderLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,11 +180,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "viagogo-tt/VGGTTDetailView.m"
-            timestampString = "480454712.953404"
+            timestampString = "480457179.19335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-connectionDidFinishLoading:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "viagogo-tt/VGGTTDetailView.m"
+            timestampString = "480457216.36497"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "5">
          </BreakpointContent>
