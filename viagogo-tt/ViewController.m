@@ -22,19 +22,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedLoading:) name:kFinishedLoading object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedLoading:) name:kContinentFilter object:nil];
+
 }
 
-- (IBAction)finishedLoading:(id)sender {
+- (void)finishedLoading:(NSNotification*)notification {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [self.tableView reloadData];
     });
+}
+
+- (void)setConFilter:(NSNotification*)notification {
+    self.filter = [notification object];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -51,9 +56,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-
+    
+    NSString *filter = self.filter;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY type like %@", filter];
+    NSArray *results = [countryDeets.fullDataEntry filteredArrayUsingPredicate:predicate];
+    
     UIImageView *flag = (UIImageView *)[cell viewWithTag:103];
-    NSString *rawAddress = [NSString stringWithFormat:@"http://www.geonames.org/flags/x/%@.gif", countryDeets.twoLetterCode[indexPath.row]];
+    NSString *rawAddress = [NSString stringWithFormat:@"http://www.geonames.org/flags/x/%@.gif", [results valueForKey:@"alpha2Code"][indexPath.row]];
     NSString *lowerCaseAddress = [rawAddress lowercaseString];
     NSURL *imgURL = [NSURL URLWithString:lowerCaseAddress];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:imgURL] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -61,20 +70,18 @@
             UIImage *img = [[UIImage alloc] initWithData:data];
             flag.image = img;
             //NSLog(@"%@",response);
-        }else{
-            NSLog(@"%@",connectionError);
+        } else {
+             [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:TVFlagCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+            NSLog(@"Error: %@", connectionError);
         }
     }];
     
-    NSString *filter = @"To Filter";
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self like %@", filter];
-    NSArray *results = [countryDeets[indexPath.row] filteredArrayUsingPredicate:predicate];
     UILabel *countryNameLabel = (UILabel *)[cell viewWithTag:101];
-    countryNameLabel.text = countryDeets.username[indexPath.row];
+    countryNameLabel.text = [results valueForKey:@"name"][indexPath.row];
     UILabel *populationLabel = (UILabel *)[cell viewWithTag:102];
-    populationLabel.text = [NSString stringWithFormat:@"Pop: %@", countryDeets.population[indexPath.row]];
+    populationLabel.text = [NSString stringWithFormat:@"Pop: %@", [results valueForKey:@"population"][indexPath.row]];
     UILabel *regionLabel = (UILabel *)[cell viewWithTag:104];
-    regionLabel.text = countryDeets.region[indexPath.row];
+    regionLabel.text = [results valueForKey:@"region"][indexPath.row];
 
 
     return cell;

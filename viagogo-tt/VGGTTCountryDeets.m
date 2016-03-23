@@ -64,6 +64,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+       [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DeetsCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

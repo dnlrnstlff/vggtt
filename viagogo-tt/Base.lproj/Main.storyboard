@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--View Controller-->
         <scene sceneID="8yY-id-fvG">
             <objects>
                 <tableViewController id="TbO-eL-i5p" customClass="ViewController" sceneMemberID="viewController">
@@ -109,7 +109,7 @@
                             <outlet property="delegate" destination="TbO-eL-i5p" id="T4E-sZ-DdY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Wbo-kK-pKJ"/>
+                    <navigationItem key="navigationItem" id="Wbo-kK-pKJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wi-WV-DLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

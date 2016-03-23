@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, strong) NSArray *tempDictionary;
 @property (nonatomic, strong) IBOutlet UILabel *countryName;
+@property (nonatomic, weak) NSString *filter;
 
 
 @end

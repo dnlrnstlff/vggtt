@@ -48,7 +48,8 @@ NSTimer *timer;
             UIImage *img = [[UIImage alloc] initWithData:data];
             self.flag.image = img;
             //NSLog(@"%@",response);
-        }else{
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DVFlagCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
             NSLog(@"%@",connectionError);
         }
     }];
@@ -101,6 +102,7 @@ NSTimer *timer;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+       [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DVInfoCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

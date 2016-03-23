@@ -8,3 +8,4 @@
 
 #import <UIKit/UIKit.h>
 #define kFinishedLoading @"finishedLoading"
+#define kContinentFilter @"ContinentFilter"
