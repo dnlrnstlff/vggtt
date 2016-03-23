@@ -17,6 +17,8 @@
 		1A79DE351CA195FA00F525A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A79DE331CA195FA00F525A9 /* LaunchScreen.storyboard */; };
 		1A79DE401CA195FA00F525A9 /* viagogo_ttTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A79DE3F1CA195FA00F525A9 /* viagogo_ttTests.m */; };
 		1A79DE4B1CA195FA00F525A9 /* viagogo_ttUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A79DE4A1CA195FA00F525A9 /* viagogo_ttUITests.m */; };
+		1AB6B9341CA2E0AC007EA775 /* VGGTTDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6B9331CA2E0AC007EA775 /* VGGTTDetailView.m */; };
+		1AB6B9361CA316A8007EA775 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB6B9351CA316A8007EA775 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,9 @@
 		1A79DE4A1CA195FA00F525A9 /* viagogo_ttUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = viagogo_ttUITests.m; sourceTree = "<group>"; };
 		1A79DE4C1CA195FA00F525A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AB6B92C1CA2BBD1007EA775 /* VGGTTPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VGGTTPrefixHeader.pch; sourceTree = "<group>"; };
+		1AB6B9321CA2E09E007EA775 /* VGGTTDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VGGTTDetailView.h; sourceTree = "<group>"; };
+		1AB6B9331CA2E0AC007EA775 /* VGGTTDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGGTTDetailView.m; sourceTree = "<group>"; };
+		1AB6B9351CA316A8007EA775 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB6B9361CA316A8007EA775 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +93,7 @@
 		1A79DE191CA195FA00F525A9 = {
 			isa = PBXGroup;
 			children = (
+				1AB6B9351CA316A8007EA775 /* MapKit.framework */,
 				1A79DE241CA195FA00F525A9 /* viagogo-tt */,
 				1A79DE3E1CA195FA00F525A9 /* viagogo-ttTests */,
 				1A79DE491CA195FA00F525A9 /* viagogo-ttUITests */,
@@ -115,6 +122,8 @@
 				1A79DE2E1CA195FA00F525A9 /* Main.storyboard */,
 				1A564C141CA1DF5800D5F002 /* VGGTTCountryDeets.h */,
 				1A5CCF8F1CA2A28300A571AA /* VGGTTCountryDeets.m */,
+				1AB6B9321CA2E09E007EA775 /* VGGTTDetailView.h */,
+				1AB6B9331CA2E0AC007EA775 /* VGGTTDetailView.m */,
 				1A79DE311CA195FA00F525A9 /* Assets.xcassets */,
 				1A79DE331CA195FA00F525A9 /* LaunchScreen.storyboard */,
 				1A79DE361CA195FA00F525A9 /* Info.plist */,
@@ -217,6 +226,11 @@
 				TargetAttributes = {
 					1A79DE211CA195FA00F525A9 = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					1A79DE3A1CA195FA00F525A9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -282,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A79DE2D1CA195FA00F525A9 /* ViewController.m in Sources */,
+				1AB6B9341CA2E0AC007EA775 /* VGGTTDetailView.m in Sources */,
 				1A79DE2A1CA195FA00F525A9 /* AppDelegate.m in Sources */,
 				1A5CCF901CA2A28300A571AA /* VGGTTCountryDeets.m in Sources */,
 				1A79DE271CA195FA00F525A9 /* main.m in Sources */,

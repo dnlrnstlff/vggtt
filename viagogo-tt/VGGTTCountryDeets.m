@@ -21,6 +21,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 @synthesize population;
 @synthesize twoLetterCode;
 @synthesize region;
+@synthesize fullDataEntry;
 
 //- (NSURL) flagURL {
 //NSString *url = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture", self.userId];
@@ -71,6 +72,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     
     NSError *myError = nil;
     NSArray *resonse = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
+    fullDataEntry = resonse;
     username = [resonse valueForKey:@"name"];
     population = [resonse valueForKey:@"population"];
     twoLetterCode = [resonse valueForKey:@"alpha2Code"];
@@ -83,10 +85,9 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kFinishedLoading object:nil];
 }
 
-- (NSURL *)pictureURL {
-    NSString *url = [NSString stringWithFormat:@"http://www.geonames.org/flags/x/%@.gif", twoLetterCode];
-    return [NSURL URLWithString:url];
-}
+
+
+
 
 
 @end

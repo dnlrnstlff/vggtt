@@ -15,6 +15,7 @@
     NSInteger *entryCount;
     NSURL *pictureURL;
     NSArray *region;
+    NSArray *fullDataEntry;
 }
 @property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic, retain) NSArray *username;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) NSString *accountType;
 @property (nonatomic) NSInteger *entryCount;
 @property (nonatomic, retain) NSURL *pictureURL;
+@property (nonatomic, retain) NSArray *fullDataEntry;
 
 + (VGGTTCountryDeets *)sharedCDManager;
 

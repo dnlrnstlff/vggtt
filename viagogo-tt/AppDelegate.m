@@ -17,7 +17,6 @@
 @synthesize countryDeets;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    countryDeets = [[VGGTTCountryDeets alloc] init];
     return YES;
 }
 
