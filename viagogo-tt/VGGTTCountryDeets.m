@@ -28,6 +28,8 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 //return [NSURL URLWithString:url];
 //}
 
+#pragma mark - init
+
 - (id) init
 {
     
@@ -38,6 +40,8 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     return self;
 }
 
+#pragma mark - global access
+
 + (VGGTTCountryDeets *)sharedCDManager {
     if(sharedCDManager == nil){
         sharedCDManager = [[super allocWithZone:NULL] init];
@@ -45,10 +49,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     return sharedCDManager;
 }
 
-
-+ (void)setConFilter:(NSNotification*)notification {
-    
-}
+#pragma mark - results filter
 
 - (void)countryLoad:(NSString *)finalFilter {
     responseData = [NSMutableData data];
@@ -64,6 +65,8 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
     }
 }
+
+#pragma mark - api call results
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");

@@ -18,6 +18,8 @@
 @implementation ViewController
 @synthesize responseData;
 
+#pragma mark - viewLoading
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -37,18 +39,12 @@
     });
 }
 
-- (void)setConFilter:(NSNotification*)notification {
-    NSLog(@"BBE");
-    self.filter = [notification object];
-    [self.tableView reloadData];
-    NSLog(@"ggt %@", [notification object]);
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Table View Layout
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -92,6 +88,8 @@
         return cell;
     
 }
+
+#pragma mark - Table View Interactions
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

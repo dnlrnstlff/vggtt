@@ -14,6 +14,8 @@ NSTimer *timer;
 @implementation VGGTTDetailView
 @synthesize responseData;
 
+#pragma mark - init
+
 - (id)initWithDeets:(VGGTTCountryDeets *)deets {
     self = [super init];
     if (self) {
@@ -21,6 +23,8 @@ NSTimer *timer;
     }
     return self;
 }
+
+#pragma mark - view loading
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +69,8 @@ NSTimer *timer;
     self.contientsButton.enabled = TRUE;
     [self.contientsButton setNeedsLayout];
 }
+
+#pragma mark - border table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -122,25 +128,20 @@ NSTimer *timer;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %lu bytes of data",(unsigned long)[self.responseData length]);
-    
     NSError *myError = nil;
     NSArray *resonse = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
     //NSLog(@"%@", self.responseData);
     _borderFullDataEntry = resonse;
     _countryName = [resonse valueForKey:@"name"];
-    NSLog(@"VOunt");
     [_borderTable reloadData];
     
     
 }
 
+#pragma mark - table view interactions
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //Get reference to receipt
-    VGGTTCountryDeets *countryDeets = [VGGTTCountryDeets sharedCDManager];
     VGGTTCountryDeets *receipt = [_borderFullDataEntry objectAtIndex:indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
                                                          bundle:nil];
@@ -150,6 +151,8 @@ NSTimer *timer;
     controller.countryData = receipt;
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+#pragma mark - filter by continent
 
 - (IBAction)filterByContinent:(id)sender {
     
