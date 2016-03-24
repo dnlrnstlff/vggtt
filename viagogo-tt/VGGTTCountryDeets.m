@@ -90,6 +90,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     NSError *myError = nil;
     NSArray *resonse = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
     fullDataEntry = resonse;
+    //NSLog(@"%@", resonse);
     
     entryCount = resonse.count;
     

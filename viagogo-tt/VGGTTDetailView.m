@@ -43,11 +43,11 @@ NSTimer *timer;
     self.countryNameTitle.text = title;
     self.dialingCode.text = [[self.countryData valueForKey:@"callingCodes"]lastObject];
     self.tld.text = [[self.countryData valueForKey:@"topLevelDomain"]lastObject];
-    if (![self.countryData valueForKey:@"timezones"]) {
+    if ([self.countryData valueForKey:@"timezones"] != [NSNull null] ) {
         self.timezone.text = [[self.countryData valueForKey:@"timezones"]lastObject];
     } else {
         self.timezone.text = @"-";
-    }
+            }
     self.currency.text = [[self.countryData valueForKey:@"currencies"]lastObject];
     NSString *continent = [NSString stringWithFormat:@"%@", [self.countryData valueForKey:@"region"]];
     [self.contientsButton setTitle:continent forState:UIControlStateNormal];
