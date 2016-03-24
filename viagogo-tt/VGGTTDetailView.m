@@ -24,8 +24,9 @@ NSTimer *timer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-       [self borderLoad];
+    [self borderLoad];
     [_borderTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"borderCell"];
+    
 }
 
 
@@ -33,13 +34,19 @@ NSTimer *timer;
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = [self.countryData valueForKey:@"name"];
-    self.countryNameAlt.text = [self.countryData valueForKey:@"name"];
-    self.countryNameTitle.text = [[self.countryData valueForKey:@"altSpellings"]lastObject];
-    self.countryNameLocal.text = [self.countryData valueForKey:@"nativeName"];
-    self.dialingCode.text = [self.countryData valueForKey:@"callingCodes"];
-    self.tld.text = [self.countryData valueForKey:@"topLevelDomain"];
-    self.timezone.text = [self.countryData valueForKey:@"timezones"];
-    self.currency.text = [self.countryData valueForKey:@"currencies"];
+    NSString *title = [NSString stringWithFormat:@"%@ - %@", [self.countryData valueForKey:@"name"], [self.countryData valueForKey:@"nativeName"]];
+    self.countryNameAlt.text = [[self.countryData valueForKey:@"altSpellings"]lastObject];
+    self.countryNameTitle.text = title;
+    self.dialingCode.text = [[self.countryData valueForKey:@"callingCodes"]lastObject];
+    self.tld.text = [[self.countryData valueForKey:@"topLevelDomain"]lastObject];
+    if (![self.countryData valueForKey:@"timezones"]) {
+        self.timezone.text = [[self.countryData valueForKey:@"timezones"]lastObject];
+    } else {
+        self.timezone.text = @"-";
+    }
+    self.currency.text = [[self.countryData valueForKey:@"currencies"]lastObject];
+    NSString *continent = [NSString stringWithFormat:@"%@", [self.countryData valueForKey:@"region"]];
+    [self.contientsButton setTitle:continent forState:UIControlStateNormal];
     NSString *rawAddress = [NSString stringWithFormat:@"http://www.geonames.org/flags/x/%@.gif", [self.countryData valueForKey:@"alpha2Code"]];
     NSString *lowerCaseAddress = [rawAddress lowercaseString];
     NSURL *imgURL = [NSURL URLWithString:lowerCaseAddress];
@@ -53,8 +60,11 @@ NSTimer *timer;
             NSLog(@"%@",connectionError);
         }
     }];
-    
-   }
+    self.contientsButton.enabled = FALSE;
+    [self.contientsButton setTitle:[self.countryData valueForKey:@"region"] forState:UIControlStateNormal];
+    self.contientsButton.enabled = TRUE;
+    [self.contientsButton setNeedsLayout];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -73,9 +83,15 @@ NSTimer *timer;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
+    UILabel *countryNameLabelDetail = (UILabel *)[cell viewWithTag:110];
+    countryNameLabelDetail.text = _countryName[indexPath.row];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
+        cell.backgroundColor = [UIColor darkGrayColor];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:16];
+        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = _countryName[indexPath.row];
-        cell.detailTextLabel.text = [[self.countryData valueForKey:@"altSpellings"]lastObject];
     });return cell;
 }
 
@@ -102,7 +118,7 @@ NSTimer *timer;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-       [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DVInfoCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DVInfoCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -115,9 +131,9 @@ NSTimer *timer;
     _borderFullDataEntry = resonse;
     _countryName = [resonse valueForKey:@"name"];
     NSLog(@"VOunt");
-   [_borderTable reloadData];
+    [_borderTable reloadData];
     
-
+    
 }
 
 
@@ -135,5 +151,12 @@ NSTimer *timer;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (IBAction)filterByContinent:(id)sender {
+    
+    VGGTTCountryDeets *countryDeets = [VGGTTCountryDeets sharedCDManager];
+    [countryDeets countryLoad:[self.countryData valueForKey:@"region"]];
+    
+    
+}
 
 @end

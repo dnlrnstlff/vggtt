@@ -27,8 +27,10 @@
 @property (nonatomic) NSInteger *entryCount;
 @property (nonatomic, retain) NSURL *pictureURL;
 @property (nonatomic, retain) NSArray *fullDataEntry;
+@property (nonatomic, strong) NSString *filter;
 
 + (VGGTTCountryDeets *)sharedCDManager;
+- (void)countryLoad:(NSString *)finalFilter;
 
 @end
 

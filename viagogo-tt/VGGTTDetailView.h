@@ -28,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *tld;
 @property (nonatomic, retain) IBOutlet UILabel *timezone;
 @property (nonatomic, retain) IBOutlet UILabel *currency;
+@property (nonatomic, retain) IBOutlet UIButton *contientsButton;
 
 
 

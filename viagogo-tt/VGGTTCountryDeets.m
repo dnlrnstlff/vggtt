@@ -30,9 +30,10 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 
 - (id) init
 {
+    
     if (self = [super init])
     {
-        [self countryLoad];
+        [self countryLoad:nil];
     }
     return self;
 }
@@ -45,11 +46,23 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 }
 
 
-- (void)countryLoad {
++ (void)setConFilter:(NSNotification*)notification {
+    
+}
+
+- (void)countryLoad:(NSString *)finalFilter {
     responseData = [NSMutableData data];
+    
+    if (!finalFilter) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:
+                                 [NSURL URLWithString:@"https://restcountries.eu/rest/v1/all"]];;
+         [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    } else {
+        NSString *filter = [NSString stringWithFormat:@"https://restcountries.eu/rest/v1/region/%@", finalFilter];
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"https://restcountries.eu/rest/v1/all"]];
+                             [NSURL URLWithString:filter]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -64,7 +77,7 @@ static VGGTTCountryDeets *sharedCDManager = nil;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-       [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DeetsCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:DeetsCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -74,10 +87,6 @@ static VGGTTCountryDeets *sharedCDManager = nil;
     NSError *myError = nil;
     NSArray *resonse = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableLeaves error:&myError];
     fullDataEntry = resonse;
-    username = [resonse valueForKey:@"name"];
-    population = [resonse valueForKey:@"population"];
-    twoLetterCode = [resonse valueForKey:@"alpha2Code"];
-    region = [resonse valueForKey:@"region"];
     
     entryCount = resonse.count;
     

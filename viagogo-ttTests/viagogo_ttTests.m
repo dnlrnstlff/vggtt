@@ -7,12 +7,16 @@
 //
 
 #import <XCTest/XCTest.h>
-
+#import "VGGTTCountryDeets.h"
 @interface viagogo_ttTests : XCTestCase
+
+@property (nonatomic, strong) NSMutableData *responseData;
 
 @end
 
 @implementation viagogo_ttTests
+
+
 
 - (void)setUp {
     [super setUp];
@@ -24,33 +28,39 @@
     [super tearDown];
 }
 
-- (void)testLogin {
+- (void)testServerCall {
 
 	XCTestExpectation *exp = [self expectationWithDescription:@"wait for server response"];
 
-
-	[HAAPICollection2 postUserLoginEmail:@"help@henchmanapp.com" password:@"tadas" success:^(AFHTTPRequestOperation *operation, id response, BOOL succeeded, NSString *message){
-
-		XCTAssertEqual(succeeded, YES);
+    _responseData = [NSMutableData data];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                             [NSURL URLWithString:@"https://restcountries.eu/rest/v1/all"]];;
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (!theConnection) {
+        // Release the receivedData object.
+        _responseData = nil;
+        
+        // Inform the user that the connection failed.
+        
+    }
+    
+    NSLog(@"request is as follows: %@", request);
+    
+    
 		[exp fulfill];
 
-	}failure:^(AFHTTPRequestOperation *operation, NSError *error){
-		XCTAssert(NO, @"log in test");
-		[exp fulfill];
-	}];
-
-
-
-	[self waitForExpectationsWithTimeout:30 handler:^(NSError * _Nullable error) {
-		NSLog(@"\n\n Finished general asynchronous API test %i: %s \n\n", _testNumber, __FUNCTION__);
+		[self waitForExpectationsWithTimeout:30 handler:^(NSError * _Nullable error) {
+		NSLog(@"\n\n Finished general asynchronous API test: %s \n\n", __FUNCTION__);
 	}];
 
 }
 
-- (void)testPerformanceExample {
+- (void)testDownloadPerformance {
     // This is an example of a performance test case.
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        VGGTTCountryDeets *countryDeets = [VGGTTCountryDeets sharedCDManager];
+        [countryDeets countryLoad:nil];
     }];
 }
 

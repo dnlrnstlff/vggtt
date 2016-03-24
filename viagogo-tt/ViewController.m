@@ -22,18 +22,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedLoading:) name:kFinishedLoading object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedLoading:) name:kContinentFilter object:nil];
+}
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setConFilter:) name:kContinentFilter object:nil];
+    
 }
 
 - (void)finishedLoading:(NSNotification*)notification {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    [self.tableView reloadData];
+    self.filter = [NSString stringWithFormat:@"all"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
     });
 }
 
 - (void)setConFilter:(NSNotification*)notification {
+    NSLog(@"BBE");
     self.filter = [notification object];
+    [self.tableView reloadData];
+    NSLog(@"ggt %@", [notification object]);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,9 +66,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    NSString *filter = self.filter;
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY type like %@", filter];
-    NSArray *results = [countryDeets.fullDataEntry filteredArrayUsingPredicate:predicate];
+    NSArray *results = countryDeets.fullDataEntry;
     
     UIImageView *flag = (UIImageView *)[cell viewWithTag:103];
     NSString *rawAddress = [NSString stringWithFormat:@"http://www.geonames.org/flags/x/%@.gif", [results valueForKey:@"alpha2Code"][indexPath.row]];
@@ -71,7 +78,7 @@
             flag.image = img;
             //NSLog(@"%@",response);
         } else {
-             [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:TVFlagCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Ooops" message:@"Something went wrong, please try again later! Code:TVFlagCall" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil] show];
             NSLog(@"Error: %@", connectionError);
         }
     }];
@@ -82,9 +89,8 @@
     populationLabel.text = [NSString stringWithFormat:@"Pop: %@", [results valueForKey:@"population"][indexPath.row]];
     UILabel *regionLabel = (UILabel *)[cell viewWithTag:104];
     regionLabel.text = [results valueForKey:@"region"][indexPath.row];
-
-
-    return cell;
+        return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,7 +99,7 @@
     VGGTTCountryDeets *countryDeets = [VGGTTCountryDeets sharedCDManager];
     VGGTTCountryDeets *receipt = [countryDeets.fullDataEntry objectAtIndex:indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main"
-                                                  bundle:nil];
+                                                         bundle:nil];
     
     VGGTTDetailView *controller = [storyboard instantiateViewControllerWithIdentifier:@"detailView"];
     
